@@ -1,6 +1,8 @@
 package application;
 
-import boardgame.Position;
+import chess.ChessMatch;
+import chess.ChessPiece;
+import chess.Color;
 
 /**
  *
@@ -9,9 +11,11 @@ import boardgame.Position;
 public class Program {
     public static void main(String[] args) {
         
-        Position pos = new Position(3,5);
+        ChessMatch chessMatch = new ChessMatch();
+        UI.printBoard(chessMatch.getPieces());
         
-        System.out.println(pos);
+       
+
         
     }
 }
