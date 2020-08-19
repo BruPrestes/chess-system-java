@@ -1,6 +1,9 @@
 package chess;
 
 import boardgame.Board;
+import boardgame.Position;
+import chess.pieces.King;
+import chess.pieces.Rook;
 
 /**
  *
@@ -12,6 +15,7 @@ public class ChessMatch {
     
     public ChessMatch(){
         board = new Board(8, 8);
+        initialSetup();
     }
     
     /*
@@ -31,5 +35,17 @@ public class ChessMatch {
             }
         }
         return mat;
+    }
+    
+    private void initialSetup(){
+        /*
+        Eu atribui a variável Board então chamei o método placePiece que será usado na camada de xadrez de acordo 
+        com o ChessPiece
+        Como é usado herança em ChessPiece então o ChessMatch acessa somente o que é usado no ChessPiece
+        O position chamei direto da classe position
+        */
+        board.placePiece(new Rook(Color.WHITE, board), new Position(2, 1));
+        board.placePiece(new King(Color.BLACK, board), new Position(0, 4));
+        board.placePiece(new King(Color.WHITE, board), new Position(7, 4));
     }
 }
