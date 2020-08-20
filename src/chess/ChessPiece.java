@@ -8,7 +8,7 @@ import boardgame.Piece;
  * @author Bruno Prestes
  */
 public class ChessPiece extends Piece {
-    
+    private Board board;
     private Color color;
 
     public ChessPiece(Color color, Board board) {
@@ -22,6 +22,5 @@ public class ChessPiece extends Piece {
         return color;
     }
 
-        
-    
+  
 }

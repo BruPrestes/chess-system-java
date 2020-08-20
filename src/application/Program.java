@@ -1,8 +1,6 @@
 package application;
 
 import chess.ChessMatch;
-import chess.ChessPiece;
-import chess.Color;
 
 /**
  *
@@ -13,7 +11,13 @@ public class Program {
         
         ChessMatch chessMatch = new ChessMatch();
         UI.printBoard(chessMatch.getPieces());
-        
+   
+        /*
+        chessMatch.getPieces vai ser o i e j do printBoard
+        8x8
+        e o método print Board vai inicializar as variáveis 
+        ou - ou a peça
+        */
        
 
         

@@ -8,6 +8,11 @@ import chess.ChessPiece;
  */
 public class UI {
     
+    /*
+    Aqui eu importei o ChessPiece
+    
+    
+    */
     //ChessPiece[][] em matriz já caiu na memória na outra classe, só ficar relax
     
     public static void printBoard(ChessPiece[][] pieces) {
@@ -20,8 +25,12 @@ public class UI {
         }
         System.out.println("  a b c d e f g h");
     }
+ 
+    
     
     private static void printPiece(ChessPiece piece){
+     //ele só vai saber se é nulo ou não chamando o chessMatch.getPieces
+     //na inicialização da variável
         if (piece == null) {
             System.out.print("-");
         }
