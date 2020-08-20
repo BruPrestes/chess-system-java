@@ -1,7 +1,6 @@
 package chess;
 
 import boardgame.Board;
-import boardgame.Position;
 import chess.pieces.King;
 import chess.pieces.Rook;
 
@@ -56,7 +55,10 @@ public class ChessMatch {
         return mat;
     }
 
-    
+    private void placeNewPiece(char column, int row, ChessPiece piece){
+        //isso porque toPosition é uma posição de matriz
+        board.placePiece(piece, new ChessPosition(column, row).toPosition());
+    }
     
     
     
@@ -73,8 +75,8 @@ public class ChessMatch {
         EUREKA
         ::::: Abaixo estou inicializando o construtor de position que será o row e column do set e get position
         */
-        board.placePiece(new Rook(Color.WHITE, board), new Position(2, 1));
-        board.placePiece(new King(Color.BLACK, board), new Position(2, 1));
-        board.placePiece(new King(Color.WHITE, board), new Position(7, 4));
+        placeNewPiece('b', 6, new Rook(Color.WHITE, board));
+        placeNewPiece('e', 8, new King(Color.BLACK, board));
+        placeNewPiece('e', 1, new King(Color.WHITE, board));
     }
 }
