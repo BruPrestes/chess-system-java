@@ -78,6 +78,30 @@ public class Board {
         que foi atribuido no calculo acima.
 */
        }
+    
+        public Piece removePiece(Position position) {
+            if (!positionExists(position)) {
+                throw new BoardException("Position not on the board");                
+            }
+            if (piece(position) == null) {
+                return null;
+            }
+            
+            /*
+            Instanciei um objeto aux que irá receber uma posição nula
+            */
+            Piece aux = piece(position);
+            aux.position = null;
+            /*
+            Acessei o pieces e setei diretamente o valor nulo para a peça que foi dada no parâmetro
+            */
+            pieces[position.getRow()][position.getColumn()] = null;
+            /*
+            irei retornar ao método que dado um parâmetro a posição será nula quando acessado o método
+            */
+            return aux;
+        }
+    
     /*Quando uma posição em uma dada linha e coluna existe
       É quando essa posição está dentro do tabuleiro
       Essa row e column vai ser o usuário que vai 
