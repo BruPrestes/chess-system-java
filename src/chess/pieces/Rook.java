@@ -20,6 +20,11 @@ public class Rook extends ChessPiece{
     public String toString() {
         return "R";
     }
-    
-    
+
+    //Ainda não tem linhas e colunas específicas no getBoard portanto vai dar tudo false no método
+    @Override
+    public boolean[][] possibleMoves() {
+        boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
+        return mat;
+    }
 }
