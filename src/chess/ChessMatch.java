@@ -76,12 +76,18 @@ public class ChessMatch {
         //removi a peça comedora de seu local de origem
         Piece p = board.removePiece(source);
         //peça comida foi removida
+        
         Piece capturedPiece = board.removePiece(target);
         //peça comedora está no local que estava a comida
         board.placePiece(p, target);
         //como o placePiece já foi instanciado 
         //capturePiece é uma peça e ela será retornada, peças tem posições 
         //ele retorna um capturedPiece porque ela é chamada assim que uma peça é capturada no Piece capturedPiece...
+        
+        //:::::::: esse return é apenas um parametro que nada mais do que 
+        //:::::::: vai retornar o que já aconteceu 
+        //:::::::: a peça comida ou n já era 
+       
         return capturedPiece;
     }
     
