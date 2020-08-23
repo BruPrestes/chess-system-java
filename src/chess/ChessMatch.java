@@ -5,6 +5,8 @@ import boardgame.Piece;
 import boardgame.Position;
 import chess.pieces.King;
 import chess.pieces.Rook;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,6 +18,9 @@ public class ChessMatch {
     private Color currentPlayer;
     private Board board;
 
+    private List<Piece> piecesOnTheBoard = new ArrayList<>();
+    private List<Piece> capturedPieces = new ArrayList<>();
+    
     public int getTurn() {
         return turn;
     }
@@ -24,7 +29,6 @@ public class ChessMatch {
         return currentPlayer;
     }
 
-    
     public ChessMatch() {
         board = new Board(8, 8);
         turn = 1;
@@ -70,6 +74,7 @@ public class ChessMatch {
     private void placeNewPiece(char column, int row, ChessPiece piece) {
         //isso porque toPosition é uma posição de matriz
         board.placePiece(piece, new ChessPosition(column, row).toPosition());
+        piecesOnTheBoard.add(piece);
     }
 
     public boolean[][] possibleMoves(ChessPosition sourcePosition) {
@@ -96,6 +101,11 @@ public class ChessMatch {
         Piece capturedPiece = board.removePiece(target);
         //peça comedora está no local que estava a comida
         board.placePiece(p, target);
+        
+        if (capturedPiece != null) {
+            piecesOnTheBoard.remove(capturedPiece);
+            capturedPieces.add(capturedPiece);
+        }
         //como o placePiece já foi instanciado 
         //capturePiece é uma peça e ela será retornada, peças tem posições 
         //ele retorna um capturedPiece porque ela é chamada assim que uma peça é capturada no Piece capturedPiece...
@@ -110,7 +120,7 @@ public class ChessMatch {
         if (!board.thereIsAPiece(position)) {
             throw new ChessException("There is no piece on source position");
         }
-        if (currentPlayer != ((ChessPiece)board.piece(position)).getColor()) {
+        if (currentPlayer != ((ChessPiece) board.piece(position)).getColor()) {
             throw new ChessException("The chosen piece is not yours");
         }
         if (!board.piece(position).isThereAnyPossibleMove()) {
@@ -124,12 +134,12 @@ public class ChessMatch {
         }
     }
 
-    private void nextTurn(){
+    private void nextTurn() {
         turn++;
         //se o jogador atual for Color.WHITE então agora será Color.BLACK, caso contrário será o Color.WHITE
         currentPlayer = (currentPlayer == Color.WHITE) ? Color.BLACK : Color.WHITE;
     }
-    
+
     private void initialSetup() {
         /*
         Eu atribui a variável Board então chamei o método placePiece que será usado na camada de xadrez de acordo 
