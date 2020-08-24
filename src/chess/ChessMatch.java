@@ -3,6 +3,7 @@ package chess;
 import boardgame.Board;
 import boardgame.Piece;
 import boardgame.Position;
+import chess.pieces.Bishop;
 import chess.pieces.King;
 import chess.pieces.Pawn;
 import chess.pieces.Rook;
@@ -246,7 +247,9 @@ public class ChessMatch {
         ::::: Abaixo estou inicializando o construtor de position que será o row e column do set e get position
          */
         placeNewPiece('a', 1, new Rook(Color.WHITE, board));
+        placeNewPiece('c', 1, new Bishop(Color.WHITE, board));
         placeNewPiece('e', 1, new King(Color.WHITE, board));
+        placeNewPiece('f', 1, new Bishop(Color.WHITE, board));
         placeNewPiece('h', 1, new Rook(Color.WHITE, board));
         placeNewPiece('a', 2, new Pawn(Color.WHITE, board));
         placeNewPiece('b', 2, new Pawn(Color.WHITE, board));
@@ -258,7 +261,9 @@ public class ChessMatch {
         placeNewPiece('h', 2, new Pawn(Color.WHITE, board));
 
         placeNewPiece('a', 8, new Rook(Color.BLACK, board));
+        placeNewPiece('c', 8, new Bishop(Color.BLACK, board));
         placeNewPiece('e', 8, new King(Color.BLACK, board));
+        placeNewPiece('f', 8, new Bishop(Color.BLACK, board));
         placeNewPiece('h', 8, new Rook(Color.BLACK, board));
         placeNewPiece('a', 7, new Pawn(Color.BLACK, board));
         placeNewPiece('b', 7, new Pawn(Color.BLACK, board));
