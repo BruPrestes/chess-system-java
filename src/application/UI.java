@@ -60,16 +60,22 @@ public class UI {
             throw new InputMismatchException("Error reading ChessPosition. Valid values are from a1 to h8");
         }
     }
-    
+
     public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
         printBoard(chessMatch.getPieces());
         System.out.println();
         printCapturedPieces(captured);
         System.out.println();
         System.out.println("Turn : " + chessMatch.getTurn());
-        System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
-        if (chessMatch.getCheck()) {
-            System.out.println("CHECK!");
+        if (!chessMatch.getCheckMate()) {
+            System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
+            if (chessMatch.getCheck()) {
+                System.out.println("CHECK!");
+            }
+        }
+        else {
+            System.out.println("CHECKMATE!");
+            System.out.println("Winner: " + chessMatch.getCurrentPlayer());
         }
     }
 
@@ -83,7 +89,7 @@ public class UI {
         }
         System.out.println("  a b c d e f g h");
     }
-    
+
     public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
         for (int i = 0; i < pieces.length; i++) {
             System.out.print((8 - i) + " ");
@@ -99,7 +105,7 @@ public class UI {
         if (background) {
             System.out.print(ANSI_BLUE_BACKGROUND);
         }
-        
+
         if (piece == null) {
             System.out.print("-" + ANSI_RESET);
         } else {
@@ -111,8 +117,8 @@ public class UI {
         }
         System.out.print(" ");
     }
-    
-    private static void printCapturedPieces(List<ChessPiece> captured){
+
+    private static void printCapturedPieces(List<ChessPiece> captured) {
         List<ChessPiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList());
         List<ChessPiece> black = captured.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList());
         System.out.println("Captured pieces");
