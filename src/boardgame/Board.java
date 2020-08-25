@@ -96,6 +96,7 @@ public class Board {
             Acessei o pieces e setei diretamente o valor nulo para a peça que foi dada no parâmetro
             */
             pieces[position.getRow()][position.getColumn()] = null;
+            
             /*
             irei retornar ao método que dado um parâmetro a posição será nula quando acessado o método
             */
