@@ -92,14 +92,25 @@ public class Board {
             */
             Piece aux = piece(position);
             aux.position = null;
+            //anula o parâmetro que foi dado
             /*
             Acessei o pieces e setei diretamente o valor nulo para a peça que foi dada no parâmetro
             */
             pieces[position.getRow()][position.getColumn()] = null;
-            
+            //dado o parâmetro anula a peça da matriz
+            //pois se não anular a peça da matriz ela irá continuar aparecendo, pois está em um espaço da memoria 
+            //que é do tabuleiro 
+            //portanto eliminasse a peça dado o parametro de sua posição e elimina do tabuleiro 
+            //pois já foi colocado na memoria do tabuleiro a peça 
+            //deve-se tirar manualmente
+            //e dada a peça deve-se eliminar sua position, pois ela irá assumir outra posição quando for dado seus sets
+            //cujos sets irão ser passados depois diretamente no set da matriz de peças
+            //a peça que tiver nessa posição no tabuleiro será nulo
+            //deixou nulo a antiga posição da peça no tabuleiro
             /*
             irei retornar ao método que dado um parâmetro a posição será nula quando acessado o método
             */
+            //anulei também a posição da peça selecionada 
             return aux;
         }
     
